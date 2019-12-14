@@ -29,7 +29,7 @@ public class TheTweet{
     public static long FirstTweet() {
         Twitter twitter = TwitterFactory.getSingleton();
         //makes an instance via connecting and authorization
-        String tweet = "Hello, just a tweeting testing again and again and now again too8" +1;
+        String tweet = "Hello, just a tweeting testing again and again and now again too10";
         Status status = null;
 //        String[] statusReturn = null;
         try {
@@ -54,13 +54,6 @@ public class TheTweet{
         }
         return null;
     }
-//    public void startBrowser() {
-//        System.setProperty("webdriver.gecko.driver", "C:\\Selenium\\geckodriver-v0.26.0-win64\\geckodriver.exe");
-//        driver = new FirefoxDriver();
-//        driver.get("https://twitter.com/");
-//
-//    }
-
 }
 
 
