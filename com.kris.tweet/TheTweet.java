@@ -39,11 +39,11 @@ public class TheTweet{
     public static long FirstTweet() {
         Twitter twitter = TwitterFactory.getSingleton();
         //makes an instance via connecting and authorization
-        String tweet01 = "Hello, just a tweeting testing again and again 37";
+        String tweet = "Hello, just a tweeting testing again and again and now"+1;
         Status status = null;
 //        String[] statusReturn = null;
         try {
-             status = twitter.updateStatus(tweet01);
+             status = twitter.updateStatus(tweet);
             //makes the first Tweet
             System.out.printf("Successfully updated status to: " + status.getText() + status.getId());
 //            statusReturn.equals(status.getId());
@@ -108,12 +108,12 @@ public class TheTweet{
 //        String twitterToken = "1204131369015750659-G0MAC8Ka2OipYIOBSHxzMFjXyllBzO";
 //        String twitterSecret = "VvTZl9VHNjbEwWveDQkqjgzO2iHN15FjJQHsYBHMgknvP";
         //  System.out.println("@" + status.getUser().getScreenName() + " - " + status.getText() + status.getId());
-
+        Long tweetId = twitter.getId();
         try {
 //            twitter.setOAuthConsumer(consumerKey, consumerSecret);
 //            AccessToken accessToken = new AccessToken(twitterToken, twitterSecret);
            // twitter.setOAuthAccessToken(accessToken);
-            Long tweetId = twitter.getId();
+          //  Long tweetId = twitter.getId();
 //            TwitterFactory factory = new TwitterFactory();
 //            Twitter twitter = factory.getInstance();
 //            String consumerKey ="5u8PTPH4wfem97GzZu2IpLsr2";
