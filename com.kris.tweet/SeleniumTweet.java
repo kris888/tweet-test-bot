@@ -2,6 +2,7 @@ package com.kris.tweet;
 
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -26,14 +27,11 @@ public class SeleniumTweet {
         driver.findElement(By.xpath("//*[@id=\"doc\"]/div/div[1]/div[1]/div[1]/form/div[2]/input")).sendKeys("e446108");
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         //CLICK BUTTON
-        driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div[1]/div[1]/form/input[1]")).click();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        //GET HOME SCREEN
-//        String expectedUrl= driver.getCurrentUrl();
-//        String actualUrl =
-//                "https://twitter.com/home";
-//        if(actualUrl.equals(expectedUrl)) {
-//            System.out.println("Test passed"); } else { System.out.println("Test failed"); }
-//    }
+//        driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div[1]/div[1]/form/input[1]")).click();
+//        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//        // Go to delete last message
+        WebElement ele = driver.findElement(By.cssSelector("#DeleteThis"));
+
+        ele.sendKeys(Keys.chord(Keys.DELETE));
     }
 }

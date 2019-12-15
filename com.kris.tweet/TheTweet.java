@@ -2,10 +2,7 @@ package com.kris.tweet;
 
 import org.openqa.selenium.WebDriver;
 
-import twitter4j.Status;
-import twitter4j.Twitter;
-import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
+import twitter4j.*;
 import twitter4j.examples.tweets.RetweetStatus;
 
 
@@ -28,7 +25,7 @@ public class TheTweet{
     public static long FirstTweet() {
         Twitter twitter = TwitterFactory.getSingleton();
         //makes an instance via connecting and authorization
-        String tweet = "Hello, just a tweeting testing again and again and now again too43";
+        String tweet = "Hello, just a tweeting testing again and again and now again too45";
         Status status = null;
         try {
           status = twitter.updateStatus(tweet);
@@ -56,17 +53,20 @@ public class TheTweet{
     public static Long Replay() throws TwitterException {
         TwitterFactory factory = new TwitterFactory();
         Twitter twitter = TwitterFactory.getSingleton();
+        String replyMessage="Hi, this is just a test message.";
+        Long inReplyToStatusId = id;
         try {
-            Status status = twitter.retweetStatus(id);
-            //  makes Retweet of the given id
+            StatusUpdate statusUpdate = new StatusUpdate(replyMessage);
+            statusUpdate.setInReplyToStatusId(inReplyToStatusId);
+            Status status = twitter.updateStatus(statusUpdate);
+            //  makes Replay of the given id
             System.out.println("@" + status.getUser().getScreenName() + " - " + status.getText() + status.getId());
-            // peint the FistTweet and Retweet
+            // prints the Replay
         } catch (TwitterException e) {
             e.printStackTrace();
         }
         return null;
     }
-
 }
 
 
