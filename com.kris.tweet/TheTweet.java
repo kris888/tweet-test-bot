@@ -19,9 +19,11 @@ public class TheTweet{
     public static void main(String[] args) throws TwitterException {
         FirstTweet();
         Retweet();
+        Replay();
         //Selenium support
         SeleniumTweet sDrive = new SeleniumTweet();
         sDrive.startBrowser();
+
     }
     public static long FirstTweet() {
         Twitter twitter = TwitterFactory.getSingleton();
@@ -50,6 +52,21 @@ public class TheTweet{
         }
         return null;
     }
+
+    public static Long Replay() throws TwitterException {
+        TwitterFactory factory = new TwitterFactory();
+        Twitter twitter = TwitterFactory.getSingleton();
+        try {
+            Status status = twitter.retweetStatus(id);
+            //  makes Retweet of the given id
+            System.out.println("@" + status.getUser().getScreenName() + " - " + status.getText() + status.getId());
+            // peint the FistTweet and Retweet
+        } catch (TwitterException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
 
 
