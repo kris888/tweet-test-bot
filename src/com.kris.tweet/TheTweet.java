@@ -1,30 +1,29 @@
 package com.kris.tweet;
-
 import org.openqa.selenium.WebDriver;
-
 import twitter4j.*;
 import twitter4j.examples.tweets.RetweetStatus;
 import twitter4j.StatusUpdate;
 
 
 public class TheTweet{
-    private static Object Status;
+ //  declaring twitter factory and status id;
     public static long id;
+    private static Twitter twitter = TwitterFactory.getSingleton();
     //Selenium support
-    WebDriver driver;
+    private WebDriver driver;
     private SeleniumTweet sDriver;
 
-    public static void main(String[] args) throws TwitterException {
+
+    public static void main(String[] args) {
         id = FirstTweet();
         Retweet();
         Reply();
         //Selenium support
         SeleniumTweet sDrive = new SeleniumTweet(id);
         sDrive.startBrowser();
-
     }
     public static long FirstTweet() {
-        Twitter twitter = TwitterFactory.getSingleton();
+        //Twitter twitter = TwitterFactory.getSingleton();
         //makes an instance via connecting and authorization
         String tweet = "Hello, just a tweeting testing again and again and now again too and salt " + Math.random();
         Status status = null;
@@ -38,9 +37,9 @@ public class TheTweet{
         return status.getId();
 //        return id = status.getId();
     }
-    public static Long Retweet() throws TwitterException{
-        TwitterFactory factory = new TwitterFactory();
-        Twitter twitter = TwitterFactory.getSingleton();
+    public static void Retweet() {
+      // TwitterFactory factory = new TwitterFactory();
+       // Twitter twitter = TwitterFactory.getSingleton();
         try {
             Status status = twitter.retweetStatus(id);
           //  makes Retweet based on id
@@ -49,12 +48,11 @@ public class TheTweet{
         } catch (TwitterException e) {
             e.printStackTrace();
         }
-        return null;
     }
 
-    public static Long Reply() throws TwitterException {
-        TwitterFactory factory = new TwitterFactory();
-        Twitter twitter = TwitterFactory.getSingleton();
+    public static void Reply(){
+        //TwitterFactory factory = new TwitterFactory();
+       // Twitter twitter = TwitterFactory.getSingleton();
         String replyMessage="Hi, this is just a test message.";
 
         Long inReplyToStatusId = id;
@@ -68,7 +66,6 @@ public class TheTweet{
         } catch (TwitterException e) {
             e.printStackTrace();
         }
-        return null;
     }
 }
 
