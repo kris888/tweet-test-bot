@@ -1,12 +1,13 @@
 package com.kris.tweet;
+
 import org.openqa.selenium.WebDriver;
 import twitter4j.*;
 import twitter4j.examples.tweets.RetweetStatus;
 import twitter4j.StatusUpdate;
 
 
-public class TheTweet{
- //  declaring twitter factory and status id;
+public class TheTweet {
+    //  declaring twitter factory and status id;
     public static long id;
     private static Twitter twitter = TwitterFactory.getSingleton();
     //Selenium support
@@ -22,38 +23,33 @@ public class TheTweet{
         SeleniumTweet sDrive = new SeleniumTweet(id);
         sDrive.startBrowser();
     }
+
     public static long FirstTweet() {
-        //Twitter twitter = TwitterFactory.getSingleton();
         //makes an instance via connecting and authorization
         String tweet = "Hello, just a tweeting testing again and again and now again too and salt " + Math.random();
         Status status = null;
         try {
-          status = twitter.updateStatus(tweet);
+            status = twitter.updateStatus(tweet);
             //makes the first Tweet
-            System.out.printf("Successfully updated status to: " + status.getText() +"id:" + status.getId());
+            System.out.printf("Successfully updated status to: " + status.getText() + "id:" + status.getId());
         } catch (TwitterException e) {
             e.printStackTrace();
         }
         return status.getId();
-//        return id = status.getId();
     }
+
     public static void Retweet() {
-      // TwitterFactory factory = new TwitterFactory();
-       // Twitter twitter = TwitterFactory.getSingleton();
         try {
             Status status = twitter.retweetStatus(id);
-          //  makes Retweet based on id
-          System.out.println("@" + status.getUser().getScreenName() + " - " + status.getText() +"id:"+ status.getId());
-            // prints the Usernname, FistTweet and Retweet+id
+            //  makes Retweet based on id
+            System.out.println("@" + status.getUser().getScreenName() + " - " + status.getText() + "id:" + status.getId());
         } catch (TwitterException e) {
             e.printStackTrace();
         }
     }
 
-    public static void Reply(){
-        //TwitterFactory factory = new TwitterFactory();
-       // Twitter twitter = TwitterFactory.getSingleton();
-        String replyMessage="Hi, this is just a test message.";
+    public static void Reply() {
+        String replyMessage = "Hi, this is just a test message.";
 
         Long inReplyToStatusId = id;
         try {
